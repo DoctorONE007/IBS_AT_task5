@@ -9,6 +9,7 @@ import ru.appline.framework.managers.DriverManager;
 
 import java.io.ByteArrayInputStream;
 
+import static ru.appline.framework.managers.DriverManager.getDriver;
 public class MortgagePage extends BasePage {
 
     @FindBy(xpath = "//div[contains(@class,'teaser')]/div[@class='kit-grid kit-grid_fixed']//h1")
@@ -41,7 +42,7 @@ public class MortgagePage extends BasePage {
     public MortgagePage checkOpenMortgagePage() {
         Assertions.assertTrue(title.getText().contains("Ипотека от") && title.getText().contains("на готовые квартиры")
                 , "Заголовок отсутствует/не соответствует требуемому");
-        driverManager.getDriver().switchTo().frame(driverManager.getDriver().findElement(By.xpath("//iframe[@id='iFrameResizer0']")));
+        getDriver().switchTo().frame(getDriver().findElement(By.xpath("//iframe[@id='iFrameResizer0']")));
         return this;
     }
 

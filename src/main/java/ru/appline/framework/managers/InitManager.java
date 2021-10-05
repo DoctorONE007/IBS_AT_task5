@@ -4,6 +4,9 @@ import java.util.concurrent.TimeUnit;
 
 import static ru.appline.framework.utils.PropConst.*;
 
+import static ru.appline.framework.managers.DriverManager.getDriver;
+
+import static ru.appline.framework.managers.DriverManager.quitDriver;
 /**
  * Класс для инициализации фреймворка
  */
@@ -16,12 +19,12 @@ public class InitManager {
      */
     private static final TestPropManager props = TestPropManager.getTestPropManager();
 
-    /**
-     * Менеджер WebDriver
-     *
-     * @see DriverManager#getDriverManager()
-     */
-    private static final DriverManager driverManager = DriverManager.getDriverManager();
+//    /**
+//     * Менеджер WebDriver
+//     *
+//     * @see DriverManager#getDriverManager()
+//     */
+//    private static final DriverManager driverManager = DriverManager.getDriverManager();
 
     /**
      * Инициализация framework и запуск браузера со страницей приложения
@@ -31,10 +34,10 @@ public class InitManager {
      * @see ru.appline.framework.utils.PropConst
      */
     public static void initFramework() {
-        driverManager.getDriver().manage().window().maximize();
-        driverManager.getDriver().manage().timeouts().implicitlyWait(Integer.parseInt(props.getProperty(IMPLICITLY_WAIT)), TimeUnit.SECONDS);
-        driverManager.getDriver().manage().timeouts().pageLoadTimeout(Integer.parseInt(props.getProperty(PAGE_LOAD_TIMEOUT)), TimeUnit.SECONDS);
-        driverManager.getDriver().get(BASE_URL);
+        getDriver().manage().window().maximize();
+        getDriver().manage().timeouts().implicitlyWait(Integer.parseInt(props.getProperty(IMPLICITLY_WAIT)), TimeUnit.SECONDS);
+        getDriver().manage().timeouts().pageLoadTimeout(Integer.parseInt(props.getProperty(PAGE_LOAD_TIMEOUT)), TimeUnit.SECONDS);
+        getDriver().get(BASE_URL);
     }
 
     /**
@@ -42,7 +45,6 @@ public class InitManager {
      *
      * @see DriverManager#quitDriver()
      */
-    public static void quitFramework() {
-        driverManager.quitDriver();
+    public static void quitFramework(){quitDriver();
     }
 }

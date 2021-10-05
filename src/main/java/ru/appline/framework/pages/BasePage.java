@@ -10,17 +10,18 @@ import ru.appline.framework.managers.DriverManager;
 import ru.appline.framework.managers.PageManager;
 import ru.appline.framework.managers.TestPropManager;
 
+import static ru.appline.framework.managers.DriverManager.getDriver;
 /**
  * Базовый класс всех страничек
  */
 public class BasePage {
 
-    /**
-     * Менеджер WebDriver
-     *
-     * @see DriverManager#getDriverManager()
-     */
-    protected final DriverManager driverManager = DriverManager.getDriverManager();
+//    /**
+//     * Менеджер WebDriver
+//     *
+//     * @see DriverManager#getDriverManager()
+//     */
+//    protected final DriverManager driverManager = DriverManager.getDriverManager();
 
     /**
      * Менеджер страничек
@@ -35,7 +36,7 @@ public class BasePage {
      *
      * @see Actions
      */
-    protected Actions action = new Actions(driverManager.getDriver());
+    protected Actions action = new Actions(getDriver());
 
 
     /**
@@ -43,7 +44,7 @@ public class BasePage {
      *
      * @see JavascriptExecutor
      */
-    protected JavascriptExecutor js = (JavascriptExecutor) driverManager.getDriver();
+    protected JavascriptExecutor js = (JavascriptExecutor) getDriver();
 
 
     /**
@@ -52,7 +53,7 @@ public class BasePage {
      *
      * @see WebDriverWait
      */
-    protected WebDriverWait wait = new WebDriverWait(driverManager.getDriver(), 10, 1000);
+    protected WebDriverWait wait = new WebDriverWait(getDriver(), 10, 1000);
 
 
     /**
@@ -72,7 +73,7 @@ public class BasePage {
      * @see PageFactory#initElements(WebDriver, Object)
      */
     public BasePage() {
-        PageFactory.initElements(driverManager.getDriver(), this);
+        PageFactory.initElements(getDriver(), this);
     }
 
 
@@ -100,7 +101,7 @@ public class BasePage {
     public WebElement scrollWithOffset(WebElement element, int x, int y) {
         String code = "window.scroll(" + (element.getLocation().x + x) + ","
                 + (element.getLocation().y + y) + ");";
-        ((JavascriptExecutor) driverManager.getDriver()).executeScript(code, element, x, y);
+        ((JavascriptExecutor) getDriver()).executeScript(code, element, x, y);
         return element;
     }
 
