@@ -23,8 +23,5 @@ public class Hooks {
 
     @After
     public void after(Scenario scenario) {
-            byte[] byteImage = ((TakesScreenshot) DriverManager.getDriverManager().getDriver()).getScreenshotAs(OutputType.BYTES);
-            Allure.addAttachment("Screenshot","image/png",new ByteArrayInputStream(byteImage),null);
-
         InitManager.quitFramework(); }
 }
