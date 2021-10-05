@@ -1,6 +1,7 @@
 def mvn = "/var/jenkins_home/tools/hudson.tasks.Maven_MavenInstallation/3.6.3/bin/mvn"
-agent { node { label 'linux' } }
+
 node {
+    label 'linux'
     stage('Checkout SCM') {
         checkout(
                 [$class           : 'GitSCM',
