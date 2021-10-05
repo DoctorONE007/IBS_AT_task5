@@ -34,7 +34,7 @@ public class InitManager {
         driverManager.getDriver().manage().window().maximize();
         driverManager.getDriver().manage().timeouts().implicitlyWait(Integer.parseInt(props.getProperty(IMPLICITLY_WAIT)), TimeUnit.SECONDS);
         driverManager.getDriver().manage().timeouts().pageLoadTimeout(Integer.parseInt(props.getProperty(PAGE_LOAD_TIMEOUT)), TimeUnit.SECONDS);
-        driverManager.getDriver().get(BASE_URL);
+        driverManager.getDriver().get(props.getProperty(BASE_URL));
     }
 
     /**

@@ -5,7 +5,7 @@ package ru.appline.framework.utils;
  */
 public class PropConst {
 
-    public static final String BASE_URL = "https://www.sberbank.ru/ru/person";
+    public static final String BASE_URL = "base.url";
 
     public static final String TYPE_BROWSER = "type.browser";
 
