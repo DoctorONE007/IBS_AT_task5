@@ -1,10 +1,10 @@
 def mvn = "/var/jenkins_home/tools/hudson.tasks.Maven_MavenInstallation/3.6.3/bin/mvn"
-
+node { label 'linux' }
 node {
     stage('Checkout SCM') {
         checkout(
-                [$class: 'GitSCM',
-                 branches: [[name: "refs/heads/${BRANCH}"]],
+                [$class           : 'GitSCM',
+                 branches         : [[name: "refs/heads/${BRANCH}"]],
                  userRemoteConfigs: [[url: 'https://github.com/DoctorONE007/IBS_AT_task5.git']]]
         )
     }
